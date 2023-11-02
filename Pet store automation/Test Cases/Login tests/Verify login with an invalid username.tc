@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Verify login with an invalid username</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>d8722ac5-c711-418c-a3d4-544f80ed1e8b</testCaseGuid>
+</TestCaseEntity>

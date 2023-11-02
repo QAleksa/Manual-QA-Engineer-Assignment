@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Verify registration without populating required fields</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b7d0e7c4-b453-4e8b-8502-60350b6c5d9e</testCaseGuid>
+</TestCaseEntity>

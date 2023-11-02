@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Remove a pet from the shopping cart</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>42f1fe1a-271c-4099-816f-e3c907c4b0e7</testCaseGuid>
+</TestCaseEntity>

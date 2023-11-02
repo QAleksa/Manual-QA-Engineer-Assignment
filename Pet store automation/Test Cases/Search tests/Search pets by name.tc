@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Search pets by name</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>85799bec-5c32-4e13-aafe-b51d37b3da21</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>97773711-f491-4cd4-b2d7-d19c86d5a0e5</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'bulldog'</defaultValue>
+      <description></description>
+      <id>97773711-f491-4cd4-b2d7-d19c86d5a0e5</id>
+      <masked>false</masked>
+      <name>pet</name>
+   </variable>
+</TestCaseEntity>

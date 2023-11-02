@@ -1,0 +1,16 @@
+{
+  "keywordFileContentHash": "157B91DE590F2DC1ECC20A3298690612",
+  "keywordClasses": [
+    {
+      "name": "petStorePackage.performLogin",
+      "keywordMethods": [
+        {
+          "name": "login",
+          "parameters": [],
+          "javadoc": ""
+        }
+      ]
+    }
+  ],
+  "javadocParsed": true
+}

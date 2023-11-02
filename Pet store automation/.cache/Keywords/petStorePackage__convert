@@ -1,0 +1,30 @@
+{
+  "keywordFileContentHash": "75618D30407C036FBDC68949E6A0EA1A",
+  "keywordClasses": [
+    {
+      "name": "petStorePackage.convert",
+      "keywordMethods": [
+        {
+          "name": "stringToDouble",
+          "parameters": [
+            {
+              "name": "string",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.lang.Object",
+                "unresolvedClassName": "java.lang.Object",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": true,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": ""
+        }
+      ]
+    }
+  ],
+  "javadocParsed": true
+}

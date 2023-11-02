@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "89b92f11-eae6-4c0c-9702-44e1998db2b5",
+		"name": "API booking scenarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30910171"
+	},
+	"item": [
+		{
+			"name": "Successful Booking Creation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});\r",
+							"\r",
+							"let jasonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response contains expected fields\", function () {\r",
+							"    pm.expect(jasonData).to.have.property(\"bookingid\");\r",
+							"    pm.expect(jasonData.booking).to.have.property(\"firstname\");\r",
+							"    pm.expect(jasonData.booking).to.have.property(\"lastname\");\r",
+							"    pm.expect(jasonData.booking).to.have.property(\"totalprice\");\r",
+							"    pm.expect(jasonData.booking).to.have.property(\"depositpaid\");\r",
+							"    pm.expect(jasonData.booking.bookingdates).to.have.property(\"checkin\");\r",
+							"    pm.expect(jasonData.booking.bookingdates).to.have.property(\"checkout\");\r",
+							"    pm.expect(jasonData.booking).to.have.property(\"additionalneeds\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Jim\",\r\n    \"lastname\": \"Brown\",\r\n    \"totalprice\": 111,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2024-01-01\",\r\n        \"checkout\": \"2025-01-01\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid request format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"first_name\" : \"Jim\",\r\n  \"last_name\" : \"Brown\",\r\n  \"totalprice\" : 111\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid data types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\" : \" \",\r\n  \"lastname\" : \"\",\r\n  \"totalprice\" : \"invalid_price\",\r\n  \"depositpaid\" : 158,\r\n  \"bookingdates\" : {\r\n    \"checkin\" : \"testetst\",\r\n    \"checkout\" : \"205890101\"\r\n  },\r\n  \"additionalneeds\" : 546\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid date format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\" : \"James\",\r\n  \"lastname\" : \"Smith\",\r\n  \"totalprice\" : 150,\r\n  \"depositpaid\" : true,\r\n  \"bookingdates\" : {\r\n    \"checkin\" : \"testtest\",\r\n    \"checkout\" : \"20231128\"\r\n  },\r\n  \"additionalneeds\" : \"Breakfast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid dates (past dates)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\" : \"James\",\r\n  \"lastname\" : \"Smith\",\r\n  \"totalprice\" : 150,\r\n  \"depositpaid\" : true,\r\n  \"bookingdates\" : {\r\n    \"checkin\" : \"2011-11-05\",\r\n    \"checkout\" : \"2013-11-08\"\r\n  },\r\n  \"additionalneeds\" : \"Breakfast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid dates (check-out is before check-in)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\" : \"James\",\r\n  \"lastname\" : \"Smith\",\r\n  \"totalprice\" : 150,\r\n  \"depositpaid\" : true,\r\n  \"bookingdates\" : {\r\n    \"checkin\" : \"2024-11-05\",\r\n    \"checkout\" : \"2023-11-08\"\r\n  },\r\n  \"additionalneeds\" : \"Breakfast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
